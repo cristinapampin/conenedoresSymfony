@@ -2,7 +2,9 @@
 namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-class ContenedoresController {
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class ContenedoresController extends AbstractController {
   /**
   * @Route("/")
   */
@@ -14,7 +16,9 @@ class ContenedoresController {
   * @Route("/listar/{slug}")
   */
   public function show($slug) {
-    return new Response (sprintf('Pag "%s"' , $slug));
+    $comentarios= ['caca', 'popo', 'pedo', '         pis pis                '];
+    return $this-> render('contenedores/listar.html.twig', 
+    ['title' => $slug, 'comentarios'=>$comentarios ]);
 
   }
 }
